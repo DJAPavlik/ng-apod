@@ -28,6 +28,13 @@ export class ApodComponent implements OnInit {
 
   getApod(date:string): void{
 
+    // JUNKJUNKJUNKJUNKJUNK
+    // If no date provided - return today's date
+    if (!date){
+      date = new Date().toISOString().slice(0,10);
+    }
+
+
     this.apodService.getApod(date).subscribe(
       (response:any)=>{
         this.apod = response;
