@@ -11,6 +11,7 @@ import { Apod } from '../models/apod';
 export class ApodComponent implements OnInit {
 
   apod:Apod;
+  
   //1. Create date as an instance variable
   date:string;
 
@@ -25,13 +26,29 @@ export class ApodComponent implements OnInit {
     });
   }
 
-  getApod(date:string): void{
+//4. Replace the current date with an updated method signature
+getApod(date:string): void{
+
+  this.apodService.getApod(date).subscribe(
+    (response:any)=>{
+      this.apod = response;
+
+      //5. Log the results to the JS console
+      console.log(response);
+    }
+  );
+
+  }
+}
+
+/*  getApod(date:string): void{
 
     //If the date is falsy, use today's date
     if(!date){
       date = new Date().toISOString().slice(0,10);
-    }
-  
+    } 
+    
+ 
     this.apodService.getApod(date).subscribe(
       (response:any)=>{
         this.apod = response;
@@ -52,4 +69,4 @@ export class ApodComponent implements OnInit {
     return new Date(date).toISOString().slice(0,10);
   }
 
-}
+} */
