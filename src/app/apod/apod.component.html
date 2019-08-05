@@ -2,6 +2,8 @@
 
   <h1>{{ apod.title }}</h1>
 
+  <button *ngIf="date" [routerLink]="['/apod', this.date]">Random Image</button>
+ <!-- <button *ngIf="date" [routerLink]="['/apod#', this.date]">Random Image</button>   -->
   <!-- Only show the image element if the media_type is set to image -->
   <img *ngIf="apod.media_type==='image'" [src]="apod.url" [alt]="apod.title">
 
@@ -18,4 +20,4 @@
 
   <p>{{ apod.explanation }}</p>
 
-  <button *ngIf="date" [routerLink]="['/apod', this.date]">Random</button>
+ 

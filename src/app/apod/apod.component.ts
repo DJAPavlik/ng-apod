@@ -28,20 +28,16 @@ export class ApodComponent implements OnInit {
 
   getApod(date:string): void{
 
-    // JUNKJUNKJUNKJUNKJUNK
     // If no date provided - return today's date
     if (!date){
       date = new Date().toISOString().slice(0,10);
     }
 
-
+    // generate a random date
     this.apodService.getApod(date).subscribe(
       (response:any)=>{
         this.apod = response;
-        //3.  Update this.date on each API call
         this.date = this.randomDate(new Date(1995,5,16), new Date());
-        //4. Log this.date to the JS console
-        console.log(this.date);
       }
     );
 
